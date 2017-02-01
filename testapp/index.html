@@ -20,8 +20,6 @@
 </head>
 <body>
 
-
-
   <div id="app">
     <h1 v-once>{{ title }}</h1>
     <h1>{{ sayHello() }} <a v-bind:href="link">Google</a></h1>
@@ -34,7 +32,7 @@
     <p>Age * 3 = {{age*3}}</p>
     <p>Random number between 1 and 100:<br> {{randomNum(100)}}</p>
     <img v-bind:src="imageLink">
-    <input type="text" v-bind:name="name">
+    <input type="text" v-bind:value="name">
   </div>
   <!-- End of Assignment 1 -->
 
@@ -42,6 +40,7 @@
   new Vue({
     el: '#app',
     data: {
+      counter: 0,
       title: 'Hello World!',
       link: 'http://google.com',
       finishedLink: '<a href="http://google.com">Google</a>'
