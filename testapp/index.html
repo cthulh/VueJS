@@ -12,22 +12,56 @@
       font-size: 5em;
       text-align: center;
     }
+    #exercise p {
+      font-size: 3em;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
+
+
+
   <div id="app">
-    <h1>{{ sayHello() }}</h1>
+    <h1 v-once>{{ title }}</h1>
+    <h1>{{ sayHello() }} <a v-bind:href="link">Google</a></h1>
+    <h1 v-html="finishedLink"></h1>
   </div>
+
+  <!-- Assignment 1 -->
+  <div id="exercise">
+    <p>Name: {{name}}, Age: {{age}}</p>
+    <p>Age * 3 = {{age*3}}</p>
+    <p>Random number between 1 and 100:<br> {{randomNum(100)}}</p>
+
+  </div>
+  <!-- End of Assignment 1 -->
 
 <script>
   new Vue({
     el: '#app',
     data: {
-      title: 'Hello World!'
+      title: 'Hello World!',
+      link: 'http://google.com',
+      finishedLink: '<a href="http://google.com">Google</a>'
     },
     methods: {
       sayHello: function () {
+        this.title = 'Hello';
         return this.title;
+      }
+    }
+  });
+  // Thought a second instance of Vue object will throw an error, but it still works!
+  new Vue({
+    el: '#exercise',
+    data: {
+      name: 'Mariusz Borowiak',
+      age: 31
+    },
+    methods: {
+      randomNum: function (num) {
+        return Math.floor(Math.random()*num + 1);
       }
     }
   });
