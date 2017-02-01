@@ -21,6 +21,14 @@
 <body>
 
   <div id="app">
+    <button v-on:click="increase(2,$event)">Click Me</button>
+    <h1>{{counter}}</h1>
+    <p v-on:mousemove="updatecoord">
+      Coordinates: {{x}} / {{y}}
+    -- <span v-on:mousemove.stop="">DEAD SPOT</span>
+      <!-- .prevent = prevents default event -->
+    </p>
+    <input type="text" v-on:keyup.enter.space="alertMe">
     <h1 v-once>{{ title }}</h1>
     <h1>{{ sayHello() }} <a v-bind:href="link">Google</a></h1>
     <h1 v-html="finishedLink"></h1>
@@ -49,6 +57,19 @@
       sayHello: function () {
         this.title = 'Hello';
         return this.title;
+      },
+      increase: function (num, event) {
+        this.counter += num;
+      },
+      updatecoord: function (event) {
+        this.x = event.clientX;
+        this.y = event.clientY;
+      },
+      dummy: function (event) {
+        event.stopPropagation();
+      },
+      alertMe: function () {
+        alert('Alert!');
       }
     }
   });
