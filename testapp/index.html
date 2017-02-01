@@ -33,7 +33,7 @@
     <p>Name: {{name}}, Age: {{age}}</p>
     <p>Age * 3 = {{age*3}}</p>
     <p>Random number between 1 and 100:<br> {{randomNum(100)}}</p>
-
+    <img v-bind:src="imageLink">
   </div>
   <!-- End of Assignment 1 -->
 
@@ -57,7 +57,8 @@
     el: '#exercise',
     data: {
       name: 'Mariusz Borowiak',
-      age: 31
+      age: 31,
+      imageLink: 'http://www.pngall.com/wp-content/uploads/2016/03/Thug-Life-Cool-Glasses-PNG.png'
     },
     methods: {
       randomNum: function (num) {
